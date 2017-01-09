@@ -1,0 +1,9 @@
+---
+Name: hubspot
+---
+#SiteConfig:
+#  extensions:
+#    - HubSpotConfigExtender
+#Page:
+#  extensions:
+#    - HubSpotRequestExtender
