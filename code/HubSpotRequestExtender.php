@@ -17,9 +17,23 @@ class HubSpotRequestExtender extends DataExtension {
 		} else {
 			$formId = $arguments["formId"];
 		}
-		$customise['portalId'] = $portalId;
-		$customise['formId'] = $formId;
+
+		// id shouldn't start numeric - so we prefixing it with HubSpotForm -> hsf
+		$formHashId = 'hsf' . substr(sha1($formId), 0, 8);
+		$customise['formHashId'] = $formHashId;
 		$template = new SSViewer("HSFormShortCode");
+
+		// explicit use of https see:
+		// http://stackoverflow.com/questions/4831741/can-i-change-all-my-http-links-to-just/27999789#27999789
+		Requirements::javascript("https://js.hsforms.net/forms/v2.js");
+		Requirements::customScript(
+			"hbspt.forms.create({
+				portalId: '". $portalId ."',
+				formId: '". $formId ."',
+				target: '#". $formHashId ."'
+			});"
+		);
+
 		return $template->process(new ArrayData($customise));
 	}
 
@@ -27,7 +41,7 @@ class HubSpotRequestExtender extends DataExtension {
 		$accountId = $this->owner->SiteConfig->HubSpotAccountID;
 		if(isset($accountId) && is_numeric($accountId)) {
 			Requirements::insertHeadTags(sprintf(
-				'<script type=\'text/javascript\' id=\'hs-script-loader\' async defer src=\'//js.hs-scripts.com/%s.js\'></script>',
+				'<script type=\'text/javascript\' id=\'hs-script-loader\' async defer src=\'https://js.hs-scripts.com/%s.js\'></script>',
 				$accountId
 			));
 		}
