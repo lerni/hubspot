@@ -15,10 +15,10 @@ You need to set the extensions in your config.
 
     SiteConfig:
       extensions:
-        - HubSpotRequestExtender
+        - HubSpotConfigExtender
     Page:
       extensions:
-        - HubSpotConfigExtender
+        - HubSpotRequestExtender
 
 Run `dev/build` either way.
 
