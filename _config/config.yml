@@ -1,9 +1,9 @@
 ---
 Name: hubspot
 ---
-#SiteConfig:
-#  extensions:
-#    - HubSpotConfigExtender
-#Page:
-#  extensions:
-#    - HubSpotRequestExtender
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Kraftausdruck\Extensions\HubSpotConfigExtender
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - Kraftausdruck\Extensions\HubSpotRequestExtender

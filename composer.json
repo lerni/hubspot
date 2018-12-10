@@ -1,7 +1,7 @@
 {
   "name": "lerni/hubspot",
   "description": "A SilverStripe module to add HubSpot Tracking Code per SiteConfig & Page extension",
-  "type": "silverstripe-module",
+  "type": "silverstripe-vendormodule",
   "homepage": "http://github.com/lerni/hubspot",
   "keywords": ["silverstripe", "hubspot"],
   "license": "BSD-3-Clause",
@@ -16,7 +16,8 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "silverstripe/siteconfig": "~3.1"
+    "silverstripe/framework": "^4",
+    "silverstripe/siteconfig": "^4"
   },
   "extra": {
     "installer-name": "hubspot"

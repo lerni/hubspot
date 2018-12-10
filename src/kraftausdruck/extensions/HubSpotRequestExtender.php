@@ -1,7 +1,21 @@
 <?php
+
+namespace Kraftausdruck\Extensions;
+
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\View\ArrayData;
+use SilverStripe\View\Requirements;
+use SilverStripe\View\SSViewer;
+use SilverStripe\SiteConfig\SiteConfig;
+
+
 class HubSpotRequestExtender extends DataExtension {
 
-	public static function HSFormShortCodeHandler($arguments,$caption = null,$parser = null) {
+	private static $casting = [
+		'HSFormShortCodeHandler' => 'HTMLText'
+	];
+
+	public static function HSFormShortCodeHandler($arguments, $content = null, $parser = null, $tagName) {
 		if (empty($arguments["portalId"])) {
 			$accountId = SiteConfig::current_site_config()->HubSpotAccountID;
 			$portalId = $accountId;
@@ -37,7 +51,7 @@ class HubSpotRequestExtender extends DataExtension {
 		return $template->process(new ArrayData($customise));
 	}
 
-	function contentControllerInit($controller) {
+	public function contentControllerInit($controller) {
 		$accountId = $this->owner->SiteConfig->HubSpotAccountID;
 		if(isset($accountId) && is_numeric($accountId)) {
 			Requirements::insertHeadTags(sprintf(

@@ -1,2 +1,3 @@
 <?php
-ShortcodeParser::get()->register('HSForm',array('HubSpotRequestExtender','HSFormShortCodeHandler'));
+
+SilverStripe\View\Parsers\ShortcodeParser::get()->register('HSForm',array('Kraftausdruck\Extensions\HubSpotRequestExtender','HSFormShortCodeHandler'));
