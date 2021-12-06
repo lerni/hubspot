@@ -26,5 +26,5 @@
     "psr-4": {
         "Kraftausdruck\\Extensions\\": "src/kraftausdruck/extensions/"
     }
-  },
+  }
 }
