@@ -1,6 +1,6 @@
 {
   "name": "lerni/hubspot",
-  "description": "A SilverStripe module to add HubSpot Tracking Code per SiteConfig & Page extension",
+  "description": "A Silverstripe module to add HubSpot Tracking Code per SiteConfig & Page extension",
   "type": "silverstripe-vendormodule",
   "homepage": "http://github.com/lerni/hubspot",
   "keywords": ["silverstripe", "hubspot"],
